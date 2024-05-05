@@ -11,6 +11,10 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea/workspace.xml
+.idea/jsLibraryMappings.xml
+.idea/misc.xml
+.idea/encodings.xml
 
 ### Eclipse ###
 .apt_generated
