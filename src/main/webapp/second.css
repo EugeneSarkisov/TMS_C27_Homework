@@ -1,0 +1,14 @@
+body {
+    background-color: #ffe395;
+}
+
+.paragraph {
+    border: medium solid red;
+    color: orange;
+    background-color: black;
+    margin: 40px 60px 0px 30px;
+    padding: 20px 20px;
+    text-align: justify;
+    font-size: 20px;
+    word-spacing: 15px;
+}
