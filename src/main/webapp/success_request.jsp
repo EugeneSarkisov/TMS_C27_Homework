@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Success!</h1>
-<p>Name: <%= request.getAttribute("name")%></p>
-<p>Age: <%= request.getAttribute("age")%></p>
+<p>Name: ${name}</p>
+<p>Age: ${age}</p>
 </body>
 </html>
