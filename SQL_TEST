@@ -1,0 +1,23 @@
+CREATE TABLE Person (
+	ID INTEGER UNIQUE,
+	NAME VARCHAR(20),
+	SURNAME VARCHAR(30),
+	AGE INTEGER,
+	PASSPORT_NUMBER INTEGER UNIQUE
+);
+
+INSERT INTO Person(ID, NAME, SURNAME, AGE, PASSPORT_NUMBER) VALUES
+(1, 'Mark', 'Rufus', 23, 453859),
+(2, 'John', 'Silver', 34, 548502),
+(3, 'Henk', 'Makcline', 35, 493029),
+(4, 'Morris', 'Haingtem', 56, 456144),
+(5, 'TestName', 'Test_Surname', 43, 111111);
+
+INSERT INTO Person(ID, NAME, SURNAME, AGE, PASSPORT_NUMBER) VALUES
+(6, 'User', 'SurUser', 22, 222222),
+(7, 'User', 'SurUser', 22, 333333),
+(8, 'User', 'SurUser', 22, 444444);
+
+UPDATE Person SET age=30 WHERE Name = 'User';
+
+DELETE FROM Person WHERE AGE > 50;
