@@ -8,4 +8,6 @@ AND commission_pct is not null;
 FROM emplyees 
 GROUP BY department_id, salary
 HAVING COUNT (*) > 1;
-6. SELECT MAX(first_name) FROM employees;
+6. SELECT * FROM employees 
+WHERE LENGTH(first_name) = 
+(SELECT MAX (LENGTH (first_name)) FROM employees);
