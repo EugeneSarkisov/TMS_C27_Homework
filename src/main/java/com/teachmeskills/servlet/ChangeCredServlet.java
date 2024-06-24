@@ -16,7 +16,7 @@ import java.sql.SQLException;
 @WebServlet("/change-login")
 public class ChangeCredServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             PostgresDriverManager driverManager = PostgresDriverManager.getInstance();
             Connection connection = driverManager.getConnection();
@@ -25,15 +25,18 @@ public class ChangeCredServlet extends HttpServlet {
             preparedStatement = connection.prepareStatement("SELECT * FROM employees WHERE employee_id = ?");
             preparedStatement.setInt(1, Integer.parseInt(req.getParameter("id")));
             resultSet = preparedStatement.executeQuery();
-            if (!resultSet.isBeforeFirst()) {
+            if (!resultSet.next()) {
                 req.setAttribute("status", "FALSE");
                 req.setAttribute("info", "USER DO NOT EXIST");
-                req.getServletContext().getRequestDispatcher("/change-login.jsp").forward(req, resp);
+                req.getServletContext().getRequestDispatcher("/change-login-result.jsp").forward(req, resp);
             } else {
                 preparedStatement = connection.prepareStatement("UPDATE employees SET first_name = ? WHERE employee_id = ?");
                 preparedStatement.setString(1, req.getParameter("login"));
                 preparedStatement.setInt(2, Integer.parseInt(req.getParameter("id")));
-                resultSet = preparedStatement.executeQuery();
+                preparedStatement.executeUpdate();
+                req.setAttribute("status", "TRUE");
+                req.setAttribute("info", "SUCCESSFULLY CHANGED LOGIN");
+                req.getServletContext().getRequestDispatcher("/change-login-result.jsp").forward(req, resp);
             }
             resultSet.close();
             preparedStatement.close();
@@ -41,5 +44,10 @@ public class ChangeCredServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect("change-login.jsp");
     }
 }

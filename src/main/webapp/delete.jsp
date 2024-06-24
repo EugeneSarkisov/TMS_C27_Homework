@@ -4,7 +4,9 @@
     <title>Title</title>
 </head>
 <body>
-<h1>DELETE ${status}</h1>
-<p>${info}</p>
+<form action="delete" method="post" enctype="application/x-www-form-urlencoded">
+    <input name="id" type="number">
+    <input type="submit" name="Delete" value="delete">
+</form>
 </body>
 </html>

@@ -4,7 +4,10 @@
     <title>Title</title>
 </head>
 <body>
-<h1>UPDATE ${status}</h1>
-<p>${info}</p>
+<form action="change-login" method="post" enctype="application/x-www-form-urlencoded">
+    <input name="id" type="number">
+    <input name="login" type="text">
+    <input type="submit" name="Change Login" value="change-login">
+</form>
 </body>
 </html>

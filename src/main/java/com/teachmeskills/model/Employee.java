@@ -14,6 +14,9 @@ public class Employee {
     private double commission_pct;
     private int department_id;
 
+    public Employee() {
+    }
+
     public Employee(int employee_id, String first_name, String last_name, String email, String phone_number,
                     Date hire_date, int salary, double commission_pct, int department_id) {
         this.employee_id = employee_id;
