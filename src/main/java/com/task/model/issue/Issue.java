@@ -8,16 +8,13 @@ public class Issue {
     private String issueDescription;
     private SubIssue subIssue;
 
-    @Autowired
     public Issue() {
     }
-
-    @Autowired
+    
     public Issue(String issueDescription) {
         this.issueDescription = issueDescription;
     }
 
-    @Autowired
     public Issue(String issueDescription, SubIssue subIssue) {
         this.issueDescription = issueDescription;
         this.subIssue = subIssue;
