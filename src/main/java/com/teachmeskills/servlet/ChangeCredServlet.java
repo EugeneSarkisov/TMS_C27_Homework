@@ -28,7 +28,6 @@ public class ChangeCredServlet extends HttpServlet {
             if (!resultSet.next()) {
                 req.setAttribute("status", "FALSE");
                 req.setAttribute("info", "USER DO NOT EXIST");
-                req.getServletContext().getRequestDispatcher("/change-login-result.jsp").forward(req, resp);
             } else {
                 preparedStatement = connection.prepareStatement("UPDATE employees SET first_name = ? WHERE employee_id = ?");
                 preparedStatement.setString(1, req.getParameter("login"));
@@ -36,8 +35,8 @@ public class ChangeCredServlet extends HttpServlet {
                 preparedStatement.executeUpdate();
                 req.setAttribute("status", "TRUE");
                 req.setAttribute("info", "SUCCESSFULLY CHANGED LOGIN");
-                req.getServletContext().getRequestDispatcher("/change-login-result.jsp").forward(req, resp);
             }
+            req.getServletContext().getRequestDispatcher("/change-login-result.jsp").forward(req, resp);
             resultSet.close();
             preparedStatement.close();
             connection.close();
