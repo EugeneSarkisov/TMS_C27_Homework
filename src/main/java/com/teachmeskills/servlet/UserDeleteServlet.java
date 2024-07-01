@@ -28,15 +28,14 @@ public class UserDeleteServlet extends HttpServlet {
             if (!resultSet.next()) {
                 req.setAttribute("status", "FALSE");
                 req.setAttribute("info", "USER DO NOT EXIST");
-                req.getServletContext().getRequestDispatcher("/delete-result.jsp").forward(req, resp);
             } else {
                 preparedStatement = connection.prepareStatement("DELETE FROM employees WHERE employee_id = ?");
                 preparedStatement.setInt(1, Integer.parseInt(req.getParameter("id")));
                 preparedStatement.executeUpdate();
                 req.setAttribute("status", "TRUE");
                 req.setAttribute("info", "USER SUCCESSFULLY DELETED");
-                req.getServletContext().getRequestDispatcher("/delete-result.jsp").forward(req, resp);
             }
+            req.getServletContext().getRequestDispatcher("/delete-result.jsp").forward(req, resp);
             resultSet.close();
             preparedStatement.close();
             connection.close();
