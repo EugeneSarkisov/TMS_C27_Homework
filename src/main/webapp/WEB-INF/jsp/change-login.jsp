@@ -6,7 +6,7 @@
 <body>
 <form action="change-login" method="post" enctype="application/x-www-form-urlencoded">
     <input name="id" type="number">
-    <input name="login" type="text">
+    <input name="newLogin" type="text">
     <input type="submit" name="Change Login" value="change-login">
 </form>
 </body>
