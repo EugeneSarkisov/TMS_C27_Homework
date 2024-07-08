@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul class="list-group" th:object="${student}" id="student">
+    <li class="list-group-item"><span th:text="*{id}"></span></li>
+    <li class="list-group-item"><span th:text="*{name}"></span></li>
+    <li class="list-group-item"><span th:text="*{surname}"></span></li>
+    <li class="list-group-item"><span th:text="*{groupID}"></span></li>
+    <li class="list-group-item"><span th:text="*{grade}"></span></li>
+</ul>
+</body>
+</html>
