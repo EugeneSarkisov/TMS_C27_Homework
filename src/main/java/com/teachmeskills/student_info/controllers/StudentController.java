@@ -27,13 +27,13 @@ public class StudentController {
             throw new RuntimeException(e);
         }
         model.addAttribute("student", student);
-        return new ModelAndView("create-result");
+        return new ModelAndView("show-result");
     }
 
-    @GetMapping("/create-result")
+    @GetMapping("/show-result")
     public String viewStudent(Model model) {
         model.getAttribute("student");
-        return "create-result";
+        return "show-result";
     }
 
     @GetMapping("/delete")
@@ -75,12 +75,6 @@ public class StudentController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return new ModelAndView("show-student-result");
-    }
-
-    @GetMapping("/show-student-result")
-    public String showInfoResult(Model model) {
-        model.getAttribute("student");
-        return "show-student-result";
+        return new ModelAndView("show-result");
     }
 }
