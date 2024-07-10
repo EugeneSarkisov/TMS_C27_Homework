@@ -10,26 +10,26 @@ public class PostgresDriverManager {
     private static String USERNAME = "postgres";
     private static String PASSWORD = "admin";
 
-    private PostgresDriverManager(){
+    private PostgresDriverManager() {
         init();
     }
 
-    private void init(){
+    private void init() {
         try {
             Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Database connection error");
         }
     }
 
-    public static PostgresDriverManager getInstance(){
-        if(instance == null){
+    public static PostgresDriverManager getInstance() {
+        if (instance == null) {
             instance = new PostgresDriverManager();
         }
         return instance;
     }
 
-    public Connection getConnection() throws SQLException{
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 }

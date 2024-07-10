@@ -4,8 +4,8 @@ import com.teachmeskills.model.Employee;
 
 import java.sql.*;
 
-public class EmployeeInfo {
-    public static Employee getInfo(int id) throws SQLException {
+public class EmployeeService {
+    public Employee getInfo(int id) throws SQLException {
         Employee employee = null;
         PostgresDriverManager driverManager = PostgresDriverManager.getInstance();
         Connection connection = driverManager.getConnection();
@@ -31,7 +31,7 @@ public class EmployeeInfo {
         return employee;
     }
 
-    public static void deleteEmployee(int id) throws SQLException {
+    public void deleteEmployee(int id) throws SQLException {
         PostgresDriverManager driverManager = PostgresDriverManager.getInstance();
         Connection connection = driverManager.getConnection();
         PreparedStatement preparedStatement;
@@ -42,7 +42,7 @@ public class EmployeeInfo {
         connection.close();
     }
 
-    public static boolean checkEmployee(int id) throws SQLException {
+    public boolean checkEmployee(int id) throws SQLException {
         PostgresDriverManager driverManager = PostgresDriverManager.getInstance();
         Connection connection = driverManager.getConnection();
         PreparedStatement preparedStatement;
@@ -50,7 +50,7 @@ public class EmployeeInfo {
         preparedStatement = connection.prepareStatement("SELECT * FROM employees WHERE employee_id = ?");
         preparedStatement.setInt(1, id);
         resultSet = preparedStatement.executeQuery();
-        if(!resultSet.next()){
+        if (!resultSet.next()) {
             resultSet.close();
             preparedStatement.close();
             connection.close();
@@ -63,7 +63,7 @@ public class EmployeeInfo {
         }
     }
 
-    public static void changeLogin(int id, String newLogin) throws SQLException {
+    public void changeLogin(int id, String newLogin) throws SQLException {
         PostgresDriverManager driverManager = PostgresDriverManager.getInstance();
         Connection connection = driverManager.getConnection();
         PreparedStatement preparedStatement;
@@ -75,7 +75,7 @@ public class EmployeeInfo {
         connection.close();
     }
 
-    public static void createEmployee(Employee employee) throws SQLException {
+    public void createEmployee(Employee employee) throws SQLException {
         PostgresDriverManager driverManager = PostgresDriverManager.getInstance();
         Connection connection = driverManager.getConnection();
         PreparedStatement preparedStatement;
