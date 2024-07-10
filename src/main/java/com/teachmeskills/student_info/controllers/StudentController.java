@@ -20,20 +20,20 @@ public class StudentController {
     }
 
     @PostMapping("/create")
-    public ModelAndView createStudent(@RequestParam int id, @RequestParam String name, @RequestParam String surname, @RequestParam Integer groupID, @RequestParam Double grade, Model model) {
-        Student student = StudentOperations.createStudent(id, name, surname, groupID, grade);
+    public ModelAndView createStudent(@ModelAttribute Student student, Model model) {
         try {
             studentService.addStudentToDB(student);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         model.addAttribute("student", student);
-        return new ModelAndView("create-result.html");
+        return new ModelAndView("create-result");
     }
 
     @GetMapping("/create-result")
-    public void viewStudent(Model model) {
+    public String viewStudent(Model model) {
         model.getAttribute("student");
+        return "create-result";
     }
 
     @GetMapping("/delete")
@@ -53,12 +53,13 @@ public class StudentController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return new ModelAndView("delete-result.html");
+        return new ModelAndView("delete-result");
     }
 
     @GetMapping("/delete-result")
-    public void deleteResult(Model model) {
+    public String deleteResult(Model model) {
         model.getAttribute("result_text");
+        return "delete-result";
     }
 
     @GetMapping("/show-student")
@@ -74,11 +75,12 @@ public class StudentController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return new ModelAndView("show-student-result.html");
+        return new ModelAndView("show-student-result");
     }
 
     @GetMapping("/show-student-result")
-    public void showInfoResult(Model model) {
+    public String showInfoResult(Model model) {
         model.getAttribute("student");
+        return "show-student-result";
     }
 }
